@@ -6,6 +6,7 @@ COPY ./Gemfile ./
 RUN gem install bundler --version "2.2.27"
 RUN bundle install
 COPY ./ ./
+CMD  bundle exec rails db:seed
 
 #EXPOSE 3000
 #CMD ["bash"]

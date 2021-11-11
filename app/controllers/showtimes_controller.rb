@@ -5,7 +5,10 @@ class ShowtimesController < ApplicationController
     movie = Movie.all.first
     schedule = Schedule.all.first
     theater = Theater.all.first
-    showtime = Showtime.new(movie_id: movie.id, theater_id: theater.id, schedule_id: schedule.id)
+    showtime = Showtime.new
+    showtime.movie = movie
+    showtime.schedule = schedule
+    showtime.theater = theater
     puts '--------------------------'
     puts '--------------------------'
     puts showtime.movie
