@@ -18,9 +18,9 @@ end
 
 Schedule.create(
   [
-    { name: 'MATINÉ', description: '17:00 - 19:00' },
-    { name: 'TANDA', description: '19:00 - 21:00' },
-    { name: 'NOCHE', description: '21:00 - 23:00' }
+    { name: 'MATINÉ', range: '17:00 - 19:00' },
+    { name: 'TANDA', range: '19:00 - 21:00' },
+    { name: 'NOCHE', range: '21:00 - 23:00' }
   ]
 )
 Movie.create(
