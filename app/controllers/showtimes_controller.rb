@@ -6,14 +6,9 @@ class ShowtimesController < ApplicationController
     schedule = Schedule.all.first
     theater = Theater.all.first
     showtime = Showtime.new
-    showtime.movie = movie
-    showtime.schedule = schedule
-    showtime.theater = theater
-    puts '--------------------------'
-    puts '--------------------------'
-    puts showtime.movie
-    puts '--------------------------'
-    puts '--------------------------'
+    showtime.movie_id = movie.id
+    showtime.schedule_id = schedule.id
+    showtime.theater_id = theater.id
     showtime.save
     @showtimes = Showtime.all
   end

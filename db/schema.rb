@@ -10,8 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_11_161820) do
+ActiveRecord::Schema.define(version: 2021_11_13_141420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "movies", force: :cascade do |t|
+    t.string "name"
+    t.text "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.string "name"
+    t.string "range"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "showtimes", force: :cascade do |t|
+    t.bigint "movie_id", null: false
+    t.bigint "theater_id", null: false
+    t.bigint "schedule_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["movie_id"], name: "index_showtimes_on_movie_id"
+    t.index ["schedule_id"], name: "index_showtimes_on_schedule_id"
+    t.index ["theater_id"], name: "index_showtimes_on_theater_id"
+  end
+
+  create_table "theaters", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.string "user"
+    t.string "row"
+    t.string "column"
+    t.bigint "showtime_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["showtime_id"], name: "index_tickets_on_showtime_id"
+  end
+
+  add_foreign_key "showtimes", "movies"
+  add_foreign_key "showtimes", "schedules"
+  add_foreign_key "showtimes", "theaters"
+  add_foreign_key "tickets", "showtimes"
 end
