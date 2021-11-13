@@ -1,1 +1,24 @@
-<h1>Home</h1>
+<h1>Showtimes</h1>
+<div class="col-md-8">
+  <h2>Today's showtimes</h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Movie</th>
+      <th>Schedule</th>
+      <th>Theater</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+    <tbody>
+      <% @showtimes.each do |showtime| %>
+        <tr>
+          <td><%= showtime.movie.name %></td>
+          <td><%= showtime.schedule.name %></td>
+          <td><%= showtime.theater.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
