@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_14_174023) do
+ActiveRecord::Schema.define(version: 2021_11_13_182313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,26 +25,13 @@ ActiveRecord::Schema.define(version: 2021_11_14_174023) do
     t.string "night"
   end
 
-  create_table "schedules", force: :cascade do |t|
-    t.string "name"
-    t.string "range"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "showtimes", force: :cascade do |t|
     t.bigint "movie_id", null: false
+    t.string "theater", null: false
+    t.string "schedule", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "theater"
-    t.string "schedule"
     t.index ["movie_id"], name: "index_showtimes_on_movie_id"
-  end
-
-  create_table "theaters", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tickets", force: :cascade do |t|
