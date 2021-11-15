@@ -1,7 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe "Movies", type: :request do
+RSpec.describe MoviesController, type: :controller do
+  let!(:movie) { create(:movie) }
   describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
+    it 'Get movies' do
+      get :index
+      expect(response).to have_http_status(:ok)
+    end
   end
 end

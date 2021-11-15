@@ -16,6 +16,14 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - chrome # <-- Link to the chrome container
+    environment:
+      HUB_URL: http://chrome:4444/wd/hub # <-- Add the HUB_URL environment variable
+      
+  chrome:
+    image: selenium/standalone-chrome:3.141.59-zirconium
+    volumes:
+      - /dev/shm:/dev/shm
 volumes:
   postgres:
   
