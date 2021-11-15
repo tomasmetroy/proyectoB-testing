@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_13_141420) do
+ActiveRecord::Schema.define(version: 2021_11_14_174023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 2021_11_13_141420) do
     t.text "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "matinee"
+    t.string "tanda"
+    t.string "night"
   end
 
   create_table "schedules", force: :cascade do |t|
@@ -31,13 +34,11 @@ ActiveRecord::Schema.define(version: 2021_11_13_141420) do
 
   create_table "showtimes", force: :cascade do |t|
     t.bigint "movie_id", null: false
-    t.bigint "theater_id", null: false
-    t.bigint "schedule_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "theater"
+    t.string "schedule"
     t.index ["movie_id"], name: "index_showtimes_on_movie_id"
-    t.index ["schedule_id"], name: "index_showtimes_on_schedule_id"
-    t.index ["theater_id"], name: "index_showtimes_on_theater_id"
   end
 
   create_table "theaters", force: :cascade do |t|
@@ -57,7 +58,5 @@ ActiveRecord::Schema.define(version: 2021_11_13_141420) do
   end
 
   add_foreign_key "showtimes", "movies"
-  add_foreign_key "showtimes", "schedules"
-  add_foreign_key "showtimes", "theaters"
   add_foreign_key "tickets", "showtimes"
 end
