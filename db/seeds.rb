@@ -24,6 +24,11 @@ Movie.create(
 
 Showtime.create(
   [
-    { movie_id: 1, theater: 'Sala 1' , schedule: 'Tanda'}
+    { movie_id: 1, theater: 'Sala1', schedule: 'Matinee' },
+    { movie_id: 1, theater: 'Sala4', schedule: 'Matinee' },
+    { movie_id: 1, theater: 'Sala1', schedule: 'Tanda' },
+    { movie_id: 1, theater: 'Sala2', schedule: 'Tanda' },
+    { movie_id: 1, theater: 'Sala1', schedule: 'Night' },
+    { movie_id: 1, theater: 'Sala3', schedule: 'Night' },
   ]
 )
