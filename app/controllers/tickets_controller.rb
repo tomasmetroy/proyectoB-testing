@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_showtime
+
   def index
     @tickets = @showtime.tickets
   end
@@ -9,12 +10,12 @@ class TicketsController < ApplicationController
   end
 
   def create
-    @row = params[:row]
+    @colum = params[:columns]
     @user = params[:user]
-    columns = params[:columns].split(';')
+    rows = params[:rows].split(';')
     ActiveRecord::Base.transaction do
-      columns.each do |column|
-        ticket = Ticket.new(showtime_id: @showtime.id, user: @user, row: @row, column: column)
+      rows.each do |row|
+        ticket = Ticket.new(showtime_id: @showtime.id, user: @user, row: row, column: @column)
         @errors = ticket.errors unless ticket.save
       end
       raise ActiveRecord::Rollback if @errors.present?
