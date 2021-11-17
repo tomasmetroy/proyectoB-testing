@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 2021_11_13_182313) do
     t.text "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "matinee"
-    t.string "tanda"
-    t.string "night"
+    t.string "matinee", default: [], array: true
+    t.string "tanda", default: [], array: true
+    t.string "night", default: [], array: true
   end
 
   create_table "showtimes", force: :cascade do |t|
