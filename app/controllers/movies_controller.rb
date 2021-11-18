@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   before_action :set_theaters, only: :new
 
-  SCHEDUELS = %w[Tanda Matinee Night].freeze
+  SCHEDULES = %w[Tanda Matinee Night].freeze
 
   def index
     @movies = Movie.all
@@ -51,7 +51,7 @@ class MoviesController < ApplicationController
 
   def set_theaters
     @schedules = {}
-    SCHEDUELS.each do |schedule|
+    SCHEDULES.each do |schedule|
       schedule_showtimes = Showtime.where(schedule: schedule).pluck(:theater)
       @schedules[schedule] = set_rooms - schedule_showtimes
     end
@@ -66,7 +66,7 @@ class MoviesController < ApplicationController
   end
 
   def set_movie_theathers
-    SCHEDUELS.each do |schedule|
+    SCHEDULES.each do |schedule|
       selected = params.require(:movie).select { |key, value| key.to_s.match(schedule) }
       selected = selected.to_unsafe_h.map { |key, value| key.split('-')[1] }
       params.require(:movie)[schedule.downcase.to_sym] = selected
