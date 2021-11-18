@@ -1,21 +1,19 @@
 class TicketsController < ApplicationController
-  before_action :set_showtime
+  before_action :set_showtime, :set_tickets
 
-  def index
-    @tickets = @showtime.tickets
-  end
+  ROWS = %w[A B C D E].freeze
 
   def new
     @ticket = Ticket.new
   end
 
   def create
-    @colum = params[:columns]
+    @row = params[:row]
     @user = params[:user]
-    rows = params[:rows].split(';')
+    seats = params[:seats].split(';')
     ActiveRecord::Base.transaction do
-      rows.each do |row|
-        ticket = Ticket.new(showtime_id: @showtime.id, user: @user, row: row, column: @column)
+      seats.each do |seat|
+        ticket = Ticket.new(showtime_id: @showtime.id, user: @user, row: @row, seat: seat)
         @errors = ticket.errors unless ticket.save
       end
       raise ActiveRecord::Rollback if @errors.present?
@@ -39,5 +37,24 @@ class TicketsController < ApplicationController
 
   def set_showtime
     @showtime = Showtime.find(params[:showtime_id])
+  end
+
+  def set_tickets
+    @tickets = @showtime.tickets
+  end
+
+  def set_rows
+    @rows = {}
+    ROWS.each do |row|
+      puts 'Terminar'
+    end
+  end
+
+  def set_available_seats
+    seats = []
+    (1..12).each do |seat|
+      seats.push(seat)
+    end
+    seats
   end
 end

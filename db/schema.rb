@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2021_11_13_182313) do
   create_table "tickets", force: :cascade do |t|
     t.string "user"
     t.string "row"
-    t.string "column"
+    t.string "seat"
     t.bigint "showtime_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

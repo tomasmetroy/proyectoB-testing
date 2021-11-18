@@ -1,14 +1,14 @@
 <h1> Tickets</h1>
 <div class="col-md-8">
-  <h2><% @showtime.movie.name %></h2>
-  <h2><% @showtime.theater %></h2>
-  <h2><% @showtime.schedule %></h2>
+  <h2><%= @showtime.movie.name %></h2>
+  <h2><%= @showtime.theater %></h2>
+  <h2><%= @showtime.schedule %></h2>
   <table class="table table-striped">
     <thead>
     <tr>
       <th>User</th>
       <th>Row</th>
-      <th>Column</th>
+      <th>Seat</th>
       <th colspan="3"></th>
     </tr>
     </thead>
@@ -17,7 +17,7 @@
         <tr>
           <td><%= ticket.user %></td>
           <td><%= ticket.row %></td>
-          <td><%= ticket.column %></td>
+          <td><%= ticket.seat %></td>
         </tr>
       <% end %>
     </tbody>

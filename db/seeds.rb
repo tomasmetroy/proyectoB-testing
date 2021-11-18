@@ -8,9 +8,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Ticket.delete_all
 Showtime.delete_all
 Movie.delete_all
-Ticket.delete_all
+
 
 ActiveRecord::Base.connection.tables.each do |t|
   ActiveRecord::Base.connection.reset_pk_sequence!(t)
@@ -18,7 +19,7 @@ end
 
 Movie.create(
   [
-    { name: 'Movie 1', image: 'url-example1', matinee: ['Sala1','Sala4'], tanda: ['Sala1','Sala2'], night: ['Sala1','Sala3']},
+    { name: 'Movie 1', image: 'https://i.picsum.photos/id/325/200/300.jpg?hmac=Msn1Ui614fNi6HvLNovytf3IQx4fpJrJYRz59dR6TFQ', matinee: ['Sala1','Sala4'], tanda: ['Sala1','Sala2'], night: ['Sala1','Sala3']},
   ]
 )
 
@@ -30,5 +31,13 @@ Showtime.create(
     { movie_id: 1, theater: 'Sala2', schedule: 'Tanda' },
     { movie_id: 1, theater: 'Sala1', schedule: 'Night' },
     { movie_id: 1, theater: 'Sala3', schedule: 'Night' },
+  ]
+)
+
+Ticket.create(
+  [
+    { user: "Nicolas", row: "A", seat: "1", showtime_id: "1"},
+    { user: "Nicolas", row: "A", seat: "2", showtime_id: "1"},
+    { user: "Nicolas", row: "A", seat: "1", showtime_id: "2"}
   ]
 )
