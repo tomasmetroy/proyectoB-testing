@@ -1,29 +1,15 @@
 <h1>Movies</h1>
 <div class="col-md-8">
   <h2>Today's movies</h2>
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th>Movie</th>
-      <th>Poster</th>
-      <th>Matinee</th>
-      <th>Tanda</th>
-      <th>Night</th>
-      <th colspan="3"></th>
-    </tr>
-    </thead>
-    <tbody>
-      <% @movies.each do |movie| %>
-        <tr>
-          <td><%= movie.name %></td>
-          <td><%= movie.image %></td>
-          <td><%= movie.matinee %></td>
-          <td><%= movie.tanda %></td>
-          <td><%= movie.night %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+    <% @movies.each do |movie| %>
+      <ul>
+      <%= image_tag movie.image, style: "width: 250px; display: block" %>
+        <h2><%=link_to "#{movie.name}", movie_path(movie) %></h2>
+        <li><%= "Matinee: #{movie.matinee}" %></li>
+        <li><%= "Tanda: #{movie.tanda}" %></li>
+        <li><%= "Night: #{movie.night}" %></li>
+      </ul>
+    <% end %>
 </div>
 <div class="row">
   <div class="col-md-2"></div>

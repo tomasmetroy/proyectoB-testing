@@ -10,7 +10,7 @@ RSpec.describe 'Movies view', type: :system do
       name = 'Attack on Titans'
 
       fill_in 'Name', with: name
-      fill_in 'Image', with: 'https://pics.filmaffinity.com/shingeki_no_kyojin_chronicle-784020525-large.jpg'
+      attach_file('Image', 'download.jpeg')
       page.check('movie[Matinee-Sala1]')
       page.check('movie[Tanda-Sala1]')
       page.check('movie[Night-Sala1]')
