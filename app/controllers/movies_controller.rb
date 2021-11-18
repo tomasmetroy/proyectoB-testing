@@ -1,4 +1,7 @@
 class MoviesController < ApplicationController
+  before_action :set_theaters, only: :new
+
+  SCHEDUELS = %w[Tanda Matinee Night].freeze
 
   def index
     @movies = Movie.all
@@ -12,10 +15,9 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
     respond_to do |format|
       if @movie.save
-        matinee_theaters = movie_params[:matinee].split(';')
-        tanda_theaters = movie_params[:tanda].split(';')
-        night_theaters = movie_params[:night].split(';')
-        puts night_theaters
+        matinee_theaters = movie_params[:matinee]
+        tanda_theaters = movie_params[:tanda]
+        night_theaters = movie_params[:night]
         matinee_theaters.each do |theater|
           matinee_showtime = Showtime.new(movie_id: @movie.id, theater: theater, schedule: 'Matinee')
           matinee_showtime.save
@@ -43,6 +45,31 @@ class MoviesController < ApplicationController
 
   private
   def movie_params
-    params.require(:movie).permit(:name, :image, :matinee, :tanda, :night)
+    set_movie_theathers
+    params.require(:movie).permit(:name, :image, matinee: [], tanda: [], night: [])
+  end
+
+  def set_theaters
+    @schedules = {}
+    SCHEDUELS.each do |schedule|
+      schedule_showtimes = Showtime.where(schedule: schedule).pluck(:theater)
+      @schedules[schedule] = set_rooms - schedule_showtimes
+    end
+  end
+
+  def set_rooms
+    theaters = []
+    (1..8).each do |n|
+      theaters.push("Sala#{n}")
+    end
+    theaters
+  end
+
+  def set_movie_theathers
+    SCHEDUELS.each do |schedule|
+      selected = params.require(:movie).select { |key, value| key.to_s.match(schedule) }
+      selected = selected.to_unsafe_h.map { |key, value| key.split('-')[1] }
+      params.require(:movie)[schedule.downcase.to_sym] = selected
+    end
   end
 end
