@@ -4,6 +4,16 @@
     <div class="panel-heading">
       <h3>Creating Tickets</h3>
     </div>
+    <h4>Tickets already bought:<h4>
+    <% puts @seats %>
+    <% @seats.keys.each do |row|%>
+        <% if (@seats[row].empty?)%>
+          <div><%= "#{row}:"%></div>
+        <%end%>
+      <% @seats[row].each do |seat|%>
+        <div><%= "#{row}-#{seat}" %></div>
+      <%end%>
+    <%end%>
     <div class="panel-body">
       <%= render 'form', ticket: @ticket %>
     </div>

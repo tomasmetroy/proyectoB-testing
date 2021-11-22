@@ -1,6 +1,9 @@
 <h1>Showtimes</h1>
 <div class="col-md-8">
   <h2>Today's showtimes</h2>
+  <% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
   <table class="table table-striped">
     <thead>
     <tr>

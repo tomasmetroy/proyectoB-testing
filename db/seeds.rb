@@ -12,16 +12,16 @@ Ticket.delete_all
 Showtime.delete_all
 Movie.delete_all
 
-
 ActiveRecord::Base.connection.tables.each do |t|
   ActiveRecord::Base.connection.reset_pk_sequence!(t)
 end
 
+=begin 
 Movie.create(
   [
-    { name: 'Movie 1', image: 'https://i.picsum.photos/id/325/200/300.jpg?hmac=Msn1Ui614fNi6HvLNovytf3IQx4fpJrJYRz59dR6TFQ', matinee: ['Sala1','Sala4'], tanda: ['Sala1','Sala2'], night: ['Sala1','Sala3']},
+    { name: 'Movie 1', matinee: ['Sala1','Sala4'], tanda: ['Sala1','Sala2'], night: ['Sala1','Sala3']},
   ]
-)
+) 
 
 Showtime.create(
   [
@@ -33,6 +33,8 @@ Showtime.create(
     { movie_id: 1, theater: 'Sala3', schedule: 'Night' },
   ]
 )
+=end
+
 
 Ticket.create(
   [
