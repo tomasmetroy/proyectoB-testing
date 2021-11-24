@@ -13,9 +13,9 @@
     <tbody>
       <% @showtimes.each do |showtime| %>
         <tr>
-          <td><%= showtime.movie.name %></td>
-          <td><%= showtime.schedule %></td>
-          <td><%= showtime.theater %></td>
+          <td class="name"><%= showtime.movie.name %></td>
+          <td class="schedule"><%= showtime.schedule %></td>
+          <td class="theater"><%= showtime.theater %></td>
         </tr>
       <% end %>
     </tbody>

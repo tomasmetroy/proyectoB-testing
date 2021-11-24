@@ -1,13 +1,16 @@
-example_id                                 | status  | run_time        |
------------------------------------------- | ------- | --------------- |
-./spec/helpers/movies_helper_spec.rb[1:1]  | pending | 0.00001 seconds |
-./spec/helpers/movies_helper_spec.rb[2:1]  | pending | 0.00001 seconds |
-./spec/helpers/tickets_helper_spec.rb[1:1] | pending | 0.00001 seconds |
-./spec/helpers/tickets_helper_spec.rb[2:1] | pending | 0.00001 seconds |
-./spec/models/movie_spec.rb[1:1:1]         | passed  | 0.00311 seconds |
-./spec/models/showtime_spec.rb[1:1:1]      | passed  | 0.02549 seconds |
-./spec/models/showtime_spec.rb[1:1:2]      | passed  | 0.00604 seconds |
-./spec/models/ticket_spec.rb[1:1:1]        | passed  | 0.27632 seconds |
-./spec/requests/movies_spec.rb[1:1:1]      | passed  | 0.03217 seconds |
-./spec/requests/tickets_spec.rb[1:1:1]     | pending | 0.00001 seconds |
-./spec/views/movies/index_spec.rb[1:1:1]   | passed  | 1.82 seconds    |
+example_id                                  | status  | run_time        |
+------------------------------------------- | ------- | --------------- |
+./spec/helpers/movies_helper_spec.rb[1:1]   | pending | 0.00001 seconds |
+./spec/helpers/movies_helper_spec.rb[2:1]   | pending | 0.00001 seconds |
+./spec/helpers/tickets_helper_spec.rb[1:1]  | pending | 0.00001 seconds |
+./spec/helpers/tickets_helper_spec.rb[2:1]  | pending | 0.00001 seconds |
+./spec/models/movie_spec.rb[1:1:1]          | passed  | 0.01797 seconds |
+./spec/models/showtime_spec.rb[1:1:1]       | passed  | 0.19135 seconds |
+./spec/models/showtime_spec.rb[1:1:2]       | passed  | 0.00756 seconds |
+./spec/models/ticket_spec.rb[1:1:1]         | passed  | 0.00907 seconds |
+./spec/requests/movies_spec.rb[1:1:1]       | failed  | 0.00359 seconds |
+./spec/requests/tickets_spec.rb[1:1:1]      | pending | 0.00001 seconds |
+./spec/views/movies/index_spec.rb[1:1:1]    | passed  | 1.58 seconds    |
+./spec/views/movies/index_spec.rb[1:1:2]    | failed  | 2.81 seconds    |
+./spec/views/showtimes/index_spec.rb[1:1:1] | passed  | 1.51 seconds    |
+./spec/views/showtimes/index_spec.rb[1:1:2] | passed  | 2.79 seconds    |

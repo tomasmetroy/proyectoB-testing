@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe 'Movies view', type: :system do
+RSpec.describe 'Movies', type: :system do
   describe 'Create' do
-    it 'Create new movie correctly' do
+    name = 'Attack on Titans'
+
+    it 'Should create new movie correctly' do
       visit new_movie_path
       find('h3', text: 'Creating Movie')
       expect(page).to have_content('Creating Movie')
-
-      name = 'Attack on Titans'
 
       fill_in 'Name', with: name
       attach_file('Image', 'download.jpeg')
@@ -17,6 +17,19 @@ RSpec.describe 'Movies view', type: :system do
       click_button 'Accept'
 
       expect(page).to have_content(name)
+    end
+
+    it 'Should check that used theater room cannot be chosen' do
+      visit new_movie_path
+
+      fill_in 'Name', with: name
+      attach_file('Image', 'download.jpeg')
+      page.check('movie[Matinee-Sala1]')
+      click_button 'Accept'
+
+      visit new_movie_path
+
+      expect(page).not_to have_content('movie[Matinee-Sala1]')
     end
   end
 end
