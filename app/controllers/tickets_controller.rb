@@ -10,7 +10,7 @@ class TicketsController < ApplicationController
   def create
     @seats_selected = []
     params['ticket'].each_key do |key|
-      @seats_selected.push(key[-1]) if key.include? 'seat'
+      @seats_selected.push(key.split('-')[-1]) if key.include? 'seat'
     end
     @row = params['ticket'][:row]
     @user = params['ticket'][:user]
