@@ -5,9 +5,10 @@
       <ul>
       <%= image_tag movie.image, style: "width: 250px; display: block" %>
         <h2><%=link_to "#{movie.name}", movie_path(movie) %></h2>
-        <li><%= "Matinee: #{movie.matinee}" %></li>
-        <li><%= "Tanda: #{movie.tanda}" %></li>
-        <li><%= "Night: #{movie.night}" %></li>
+
+        <li class="matinee"><%= "Matinee: #{movie.matinee}" %></li>
+        <li class="tanda"><%= "Tanda: #{movie.tanda}" %></li>
+        <li class="night"><%= "Night: #{movie.night}" %></li>
       </ul>
     <% end %>
 </div>

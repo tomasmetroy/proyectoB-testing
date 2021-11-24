@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Showtimes', type: :system do
-    describe 'Verify' do
+    describe 'Show' do
         name = 'Attack on Titans'
 
         it 'Created movie is shown' do
@@ -35,7 +35,5 @@ RSpec.describe 'Showtimes', type: :system do
                 expect(tr).to have_css('td.theater', text: "Sala1")
             end 
         end
-
-        
     end
 end

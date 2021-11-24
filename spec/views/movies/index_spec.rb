@@ -32,4 +32,36 @@ RSpec.describe 'Movies', type: :system do
       expect(page).not_to have_content('movie[Matinee-Sala1]')
     end
   end
+
+  describe 'Show' do
+    names = ['Attack on Titans', 'Inception']
+
+    it 'Should show created movies' do
+      visit new_movie_path
+
+      fill_in 'Name', with: names[0]
+      attach_file('Image', 'download.jpeg')
+      page.check('movie[Matinee-Sala1]')
+      click_button 'Accept'
+
+      visit new_movie_path
+
+      fill_in 'Name', with: names[1]
+      attach_file('Image', 'download.jpeg')
+      page.check('movie[Night-Sala2]')
+      click_button 'Accept'
+
+      visit movies_path
+
+      page.all('ul').each do |ul|
+        next unless ul.has_css?('h2', text: names[0])
+        expect(ul).to have_css('li.matinee', text: 'Matinee: ["Sala1"]')
+      end
+
+      page.all('ul').each do |ul|
+        next unless ul.has_css?('h2', text: names[1])
+        expect(ul).to have_css('li.night', text: 'Night: ["Sala2"]')
+      end
+    end
+  end
 end
