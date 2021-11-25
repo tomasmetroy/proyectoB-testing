@@ -18,13 +18,13 @@
       <tbody>
 
         <% @seats.keys.each do |row|%>
-          <tr >
+          <tr id=<%="row-#{row}"%>>
             <td><%= row %></td>
             <% (1..12).each do |column| %>
               <% if @seats[row].include? column.to_s %>
-                <td class="bg-danger">X </td>
+                <td class="bg-danger" id=<%="seat-#{row}-#{column}"%>>X </td>
               <% else %>
-                <td class="bg-success"></td>
+                <td class="bg-success" id=<%="seat-#{row}-#{column}"%>></td>
               <% end %>
               
             <% end %>
