@@ -11,6 +11,7 @@
       <th>Schedule</th>
       <th>Theater</th>
       <th>Buy Ticket</th>
+      <th>View Tickets</th>
     </tr>
     </thead>
     <tbody>
@@ -21,6 +22,9 @@
           <td><%= showtime.theater %></td>
           <td>
             <%= link_to 'Buy Ticket', new_showtime_ticket_path(showtime_id: showtime.id),:class => 'btn btn-default' %>
+          </td>
+          <td>
+            <%= link_to 'View Tickets', showtime_tickets_path(showtime_id: showtime.id),:class => 'btn btn-default' %>
           </td>
         </tr>
       <% end %>

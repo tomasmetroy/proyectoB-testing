@@ -40,6 +40,10 @@ class TicketsController < ApplicationController
     @ticket = Ticket.find(params[:id])
   end
 
+  def index
+    @tickets = @showtime.tickets
+  end
+
   private
   def set_showtime
     @showtime = Showtime.find(params[:showtime_id])
