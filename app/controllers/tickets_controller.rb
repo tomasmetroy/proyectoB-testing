@@ -22,6 +22,7 @@ class TicketsController < ApplicationController
           @errors = ticket.errors unless ticket.save
         rescue ActiveRecord::RecordNotUnique
           format.html { redirect_to '/', notice: "The ticket #{@row}-#{seat} was already bought!" }
+          break
         end
         raise ActiveRecord::Rollback if @errors.present?
       end
