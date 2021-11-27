@@ -10,8 +10,10 @@ example_id                                  | status  | run_time        |
 ./spec/models/ticket_spec.rb[1:1:1]         | passed  | 0.20946 seconds |
 ./spec/requests/movies_spec.rb[1:1:1]       | failed  | 0.00335 seconds |
 ./spec/requests/tickets_spec.rb[1:1:1]      | pending | 0.00001 seconds |
-./spec/views/movies/index_spec.rb[1:1:1]    | passed  | 0.79013 seconds |
-./spec/views/movies/index_spec.rb[1:1:2]    | passed  | 0.5535 seconds  |
-./spec/views/movies/index_spec.rb[1:2:1]    | passed  | 10.12 seconds   |
-./spec/views/showtimes/index_spec.rb[1:1:1] | passed  | 0.75927 seconds |
-./spec/views/showtimes/index_spec.rb[1:1:2] | passed  | 2.65 seconds    |
+./spec/views/movies/index_spec.rb[1:1:1]    | passed  | 0.749 seconds   |
+./spec/views/movies/index_spec.rb[1:1:2]    | passed  | 0.56794 seconds |
+./spec/views/movies/index_spec.rb[1:2:1]    | passed  | 9.19 seconds    |
+./spec/views/showtimes/index_spec.rb[1:1:1] | passed  | 0.77998 seconds |
+./spec/views/showtimes/index_spec.rb[1:1:2] | passed  | 2.64 seconds    |
+./spec/views/tickets/index_spec.rb[1:1:1]   | passed  | 1.06 seconds    |
+./spec/views/tickets/index_spec.rb[1:1:2]   | passed  | 4.17 seconds    |

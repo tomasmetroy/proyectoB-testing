@@ -40,7 +40,6 @@ RSpec.describe 'Tickets view', type: :system do
             fill_in 'User Name', with: buyer
             select "B", :from => "Row"
             page.check('ticket[seat-1]')
-            page.check('ticket[seat-3]')
             click_button 'Accept'
             
             find(:xpath, "//tr[td[contains(.,'Matinee')]]/td/a", :text => 'Buy Ticket').click
@@ -51,12 +50,16 @@ RSpec.describe 'Tickets view', type: :system do
             td = find_by_id('seat-B-2')
             expect(td).to have_no_content()
 
-            td = find_by_id('seat-B-3')
-            expect(td).to have_content('X')
+            click_link 'Back'
+            find(:xpath, "//tr[td[contains(.,'Matinee')]]/td/a", :text => 'View Tickets').click
 
-            # click_button 'Back'
-            # click_button 'View Tickets'
+            expect(page).to have_content("Tickets")
 
+            page.all('tr').each do |tr|
+                next unless tr.has_css?('td.user', text: buyer)
+                expect(tr).to have_css('td.row', text: "B")
+                expect(tr).to have_css('td.seat', text: "1")
+            end
         end
     end
 end
