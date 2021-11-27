@@ -66,6 +66,7 @@ yarn-debug.log*
 /storage/*
 !/storage/.keep
 
+Gemfile.lock
 /public/packs
 /public/packs-test
 /node_modules

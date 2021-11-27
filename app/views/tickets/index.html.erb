@@ -15,9 +15,9 @@
     <tbody>
       <% @tickets.each do |ticket| %>
         <tr>
-          <td><%= ticket.user %></td>
-          <td><%= ticket.row %></td>
-          <td><%= ticket.seat %></td>
+          <td class="user"><%= ticket.user %></td>
+          <td class="row"><%= ticket.row %></td>
+          <td class="seat"><%= ticket.seat %></td>
         </tr>
       <% end %>
     </tbody>

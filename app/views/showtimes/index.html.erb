@@ -17,9 +17,9 @@
     <tbody>
       <% @showtimes.each do |showtime| %>
         <tr>
-          <td><%= showtime.movie.name %></td>
-          <td><%= showtime.schedule %></td>
-          <td><%= showtime.theater %></td>
+          <td class="name"><%= showtime.movie.name %></td>
+          <td class="schedule"><%= showtime.schedule %></td>
+          <td class="theater"><%= showtime.theater %></td>
           <td>
             <%= link_to 'Buy Ticket', new_showtime_ticket_path(showtime_id: showtime.id),:class => 'btn btn-default' %>
           </td>
