@@ -41,6 +41,7 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
+    @showtimes = Showtime.where({ movie: @movie })
   end
 
   private
