@@ -22,5 +22,9 @@ jobs:
           ruby-version: 2.7.3
       - name: Install dependencies
         run: bundle install
+      - name: Create db
+        run: docker-compose run web rails db:create
+      - name: MIgrate DB
+        run: docker-compose run web rails db:migrate
       - name: Run tests
-        run: bundle exec rspec
+        run: docker-compose run web bundle exec rspec
