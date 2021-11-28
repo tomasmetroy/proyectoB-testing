@@ -20,11 +20,11 @@ jobs:
         uses: ruby/setup-ruby@477b21f02be01bcb8030d50f37cfec92bfa615b6
         with:
           ruby-version: 2.7.3
-      - name: Install dependencies
-        run: bundle install
-      - name: Create db
-        run: docker-compose run web rails db:create
-      - name: MIgrate DB
-        run: docker-compose run web rails db:migrate
+      # - name: Install dependencies
+      #   run: bundle install
+      # - name: Create DB
+      #   run: docker-compose run web rails db:create
+      # - name: MIgrate DB
+      #   run: docker-compose run web rails db:migrate
       - name: Run tests
         run: docker-compose run web bundle exec rspec
