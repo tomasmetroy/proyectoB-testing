@@ -4,3 +4,8 @@
 require_relative "config/application"
 
 Rails.application.load_tasks
+
+RuboCop::RakeTask.new(:lint) do |task|
+  task.patterns = ['lib/**/*.rb', 'test/**/*.rb', 'test/helpers/**/*.rb']
+  task.fail_on_error = true
+end

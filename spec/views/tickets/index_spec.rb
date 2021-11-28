@@ -1,19 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe 'Tickets view', type: :system do
-    describe 'Buy' do
-        name = "Inception"
-        buyer = "Kitty"
-        
-        it 'Buy new ticket correctly' do
-            visit new_movie_path
+    name = 'Inception'
+    let!(:movie) { create(:movie, name: name, matinee: ['Sala1']) }
+    let!(:showtime1) { create(:showtime, movie: movie, schedule: 'Matinee', theater: 'Sala1') }
 
-            fill_in 'Name', with: name
-            attach_file('Image', 'download.jpeg')
-            page.check('movie[Matinee-Sala1]')
-            click_button 'Accept'
-        
-            # click_button 'Buy Tickets'
+    before :each do
+        image1 = File.open('download.jpeg')
+        movie.image.attach(io: image1, filename: 'image1.jpeg', content_type: 'image/jpeg')
+    end
+    
+    describe 'Buy' do
+        buyer = 'Kitty'
+        it 'Buy new ticket correctly' do
+            visit movie_path(movie)
+
             find(:xpath, "//tr[td[contains(.,'Matinee')]]/td/a", :text => 'Buy Tickets').click
 
             expect(page).to have_content("Creating Tickets")
@@ -27,14 +28,8 @@ RSpec.describe 'Tickets view', type: :system do
         end
         
         it 'Display purchased tickets correctly' do
-            visit new_movie_path
+            visit movie_path(movie)
 
-            fill_in 'Name', with: name
-            attach_file('Image', 'download.jpeg')
-            page.check('movie[Matinee-Sala1]')
-            click_button 'Accept'
-        
-            # click_button 'Buy Tickets'
             find(:xpath, "//tr[td[contains(.,'Matinee')]]/td/a", :text => 'Buy Tickets').click
 
             fill_in 'User Name', with: buyer
