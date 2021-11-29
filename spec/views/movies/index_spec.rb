@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Movies', type: :system do
   describe 'Create' do
-    name = 'Attack on Titans'
-
+    name = 'Deadpool'
     it 'Should create new movie correctly' do
       visit new_movie_path
       find('h3', text: 'Creating Movie')
@@ -35,21 +36,14 @@ RSpec.describe 'Movies', type: :system do
 
   describe 'Show' do
     names = ['Attack on Titans', 'Inception']
+    let!(:movie1) { create(:movie, name: names[0], matinee: ['Sala1']) }
+    let!(:movie2) { create(:movie, name: names[1], night: ['Sala2']) }
 
     it 'Should show created movies' do
-      visit new_movie_path
-
-      fill_in 'Name', with: names[0]
-      attach_file('Image', 'download.jpeg')
-      page.check('movie[Matinee-Sala1]')
-      click_button 'Accept'
-
-      visit new_movie_path
-
-      fill_in 'Name', with: names[1]
-      attach_file('Image', 'download.jpeg')
-      page.check('movie[Night-Sala2]')
-      click_button 'Accept'
+      image1 = File.open('download.jpeg')
+      image2 = File.open('download.jpeg')
+      movie1.image.attach(io: image1, filename: 'image1.jpeg', content_type: 'image/jpeg')
+      movie2.image.attach(io: image2, filename: 'image2.jpeg', content_type: 'image/jpeg')
 
       visit movies_path
 
