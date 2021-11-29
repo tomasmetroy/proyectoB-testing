@@ -1,0 +1,26 @@
+<h1> Tickets</h1>
+<div class="col-md-8">
+  <h2><%= @showtime.movie.name %></h2>
+  <h2><%= @showtime.theater %></h2>
+  <h2><%= @showtime.schedule %></h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>User</th>
+      <th>Row</th>
+      <th>Seat</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+    <tbody>
+      <% @tickets.each do |ticket| %>
+        <tr>
+          <td class="user"><%= ticket.user %></td>
+          <td class="row"><%= ticket.row %></td>
+          <td class="seat"><%= ticket.seat %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+

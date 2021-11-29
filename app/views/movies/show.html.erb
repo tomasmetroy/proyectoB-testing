@@ -1,1 +1,33 @@
 <h1><%= @movie.name %></h1>
+<div> 
+  <ul>
+  <%= image_tag @movie.image, style: "width: 250px; display: block" %>
+  </ul>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Schedule</th>
+        <th>Theater</th>
+        <th>Buy Ticket</th>
+        <th>View Tickets</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @showtimes.each do |showtime| %>
+        <tr>
+          <td><%= showtime.schedule %></td>
+          <td><%= showtime.theater %></td>
+          <td>
+            <%= link_to 'Buy Tickets', new_showtime_ticket_path(showtime_id: showtime.id),:class => 'btn btn-default' %>
+          </td>
+          <td>
+            <%= link_to 'View Tickets', showtime_tickets_path(showtime_id: showtime.id),:class => 'btn btn-default' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+

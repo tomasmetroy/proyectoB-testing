@@ -1,0 +1,19 @@
+example_id                                  | status  | run_time        |
+------------------------------------------- | ------- | --------------- |
+./spec/helpers/movies_helper_spec.rb[1:1]   | pending | 0.00001 seconds |
+./spec/helpers/movies_helper_spec.rb[2:1]   | pending | 0.00001 seconds |
+./spec/helpers/tickets_helper_spec.rb[1:1]  | pending | 0.00001 seconds |
+./spec/helpers/tickets_helper_spec.rb[2:1]  | pending | 0.00001 seconds |
+./spec/models/movie_spec.rb[1:1:1]          | passed  | 0.036 seconds   |
+./spec/models/showtime_spec.rb[1:1:1]       | passed  | 0.34621 seconds |
+./spec/models/showtime_spec.rb[1:1:2]       | passed  | 0.00591 seconds |
+./spec/models/ticket_spec.rb[1:1:1]         | passed  | 0.00495 seconds |
+./spec/requests/movies_spec.rb[1:1:1]       | failed  | 0.00363 seconds |
+./spec/requests/tickets_spec.rb[1:1:1]      | pending | 0.00001 seconds |
+./spec/views/movies/index_spec.rb[1:1:1]    | passed  | 0.93142 seconds |
+./spec/views/movies/index_spec.rb[1:1:2]    | passed  | 0.75852 seconds |
+./spec/views/movies/index_spec.rb[1:2:1]    | passed  | 8.59 seconds    |
+./spec/views/showtimes/index_spec.rb[1:1:1] | passed  | 0.34508 seconds |
+./spec/views/showtimes/index_spec.rb[1:1:2] | passed  | 7.95 seconds    |
+./spec/views/tickets/index_spec.rb[1:1:1]   | passed  | 1.29 seconds    |
+./spec/views/tickets/index_spec.rb[1:1:2]   | passed  | 3.45 seconds    |
